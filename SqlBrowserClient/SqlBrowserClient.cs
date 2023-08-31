@@ -26,7 +26,7 @@ namespace SqlBrowserClient
         {
             var parserRegex =
                 new Regex(
-                    @"[^;]*ServerName;(?<ServerName>[\w\d]+);InstanceName;(?<InstanceName>[\w\d]+);IsClustered;(?<IsClustered>[\w]+);Version;(?<Version>[\d]+\.[\d]+\.[\d]+\.[\d]+)(;tcp;(?<tcp>\d+))?(;np;(?<np>[^;]+))?;;");
+                    @"[^;]*ServerName;(?<ServerName>[\w\W\d]+);InstanceName;(?<InstanceName>[\w\d]+);IsClustered;(?<IsClustered>[\w]+);Version;(?<Version>[\d]+\.[\d]+\.[\d]+\.[\d]+)(;tcp;(?<tcp>\d+))?(;np;(?<np>[^;]+))?;;");
             var instances = new List<SqlInstance>();
             return responses
                 .SelectMany(s => parserRegex.Matches(s))
